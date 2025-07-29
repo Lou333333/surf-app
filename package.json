@@ -2,7 +2,7 @@
   "name": "surf-app",
   "version": "0.1.0",
   "private": true,
-    "scripts": {
+  "scripts": {
     "dev": "next dev",
     "build": "DISABLE_ESLINT_PLUGIN=true next build",
     "start": "next start",
@@ -26,6 +26,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^7.0.6"
   }
 }
