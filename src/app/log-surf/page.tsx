@@ -129,131 +129,130 @@ export default function LogSurf() {
     )
   }
 
-return (
-  <div className="min-h-screen bg-blue-50">
-    <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center mb-6">
-          <button
-            onClick={() => router.push('/dashboard')}
-            className="text-blue-500 hover:text-blue-700 mr-4"
-          >
-            ← Back to Dashboard
-          </button>
-          <h1 className="text-2xl font-bold text-gray-800">Log Surf Session</h1>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Break Selection */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Surf Break
-            </label>
-            <select
-              value={selectedBreakId}
-              onChange={(e) => setSelectedBreakId(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
+  return (
+    <div className="min-h-screen bg-blue-50">
+      <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="flex items-center mb-6">
+            <button
+              onClick={() => router.push('/dashboard')}
+              className="text-blue-500 hover:text-blue-700 mr-4"
             >
-              <option value="">Select a break...</option>
-              {breaks.map((surfBreak) => (
-                <option key={surfBreak.id} value={surfBreak.id}>
-                  {surfBreak.name} ({surfBreak.region})
-                </option>
-              ))}
-            </select>
+              ← Back to Dashboard
+            </button>
+            <h1 className="text-2xl font-bold text-gray-800">Log Surf Session</h1>
           </div>
 
-          {/* Rating Selection */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
-              How was the surf?
-            </label>
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { value: 'amazing', label: 'Amazing', emoji: '🤩', desc: 'Epic session!' },
-                { value: 'fun', label: 'Fun', emoji: '😊', desc: 'Good waves' },
-                { value: 'bad', label: 'Bad', emoji: '😞', desc: 'Poor conditions' }
-              ].map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => setRating(option.value as any)}
-                  className={`p-4 border-2 rounded-lg text-center transition-colors ${
-                    rating === option.value
-                      ? getRatingColor(option.value)
-                      : 'bg-gray-100 border-gray-200 hover:bg-gray-200'
-                  } ${rating === option.value ? 'text-white' : 'text-gray-700'}`}
-                >
-                  <div className="text-2xl mb-1">{option.emoji}</div>
-                  <div className="font-semibold">{option.label}</div>
-                  <div className="text-xs opacity-75 mt-1">{option.desc}</div>
-                </button>
-              ))}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Break Selection */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Surf Break
+              </label>
+              <select
+                value={selectedBreakId}
+                onChange={(e) => setSelectedBreakId(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="">Select a break...</option>
+                {breaks.map((surfBreak) => (
+                  <option key={surfBreak.id} value={surfBreak.id}>
+                    {surfBreak.name} ({surfBreak.region})
+                  </option>
+                ))}
+              </select>
             </div>
-          </div>
 
-          {/* Date Selection */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Session Date
-            </label>
-            <input
-              type="date"
-              value={sessionDate}
-              onChange={(e) => setSessionDate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          {/* Time Selection */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Time of Day
-            </label>
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { value: 'morning', label: 'Morning', time: '6AM - 10AM' },
-                { value: 'midday', label: 'Midday', time: '10AM - 3PM' },
-                { value: 'afternoon', label: 'Afternoon', time: '3PM - 7PM' }
-              ].map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => setSessionTime(option.value as any)}
-                  className={`p-3 border-2 rounded-lg text-center transition-colors ${
-                    sessionTime === option.value
-                      ? 'bg-blue-500 border-blue-500 text-white'
-                      : 'bg-gray-100 border-gray-200 hover:bg-gray-200 text-gray-700'
-                  }`}
-                >
-                  <div className="font-semibold">{option.label}</div>
-                  <div className="text-sm opacity-75">{option.time}</div>
-                </button>
-              ))}
+            {/* Rating Selection */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                How was the surf?
+              </label>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { value: 'amazing', label: 'Amazing', emoji: '🤩', desc: 'Epic session!' },
+                  { value: 'fun', label: 'Fun', emoji: '😊', desc: 'Good waves' },
+                  { value: 'bad', label: 'Bad', emoji: '😞', desc: 'Poor conditions' }
+                ].map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setRating(option.value as any)}
+                    className={`p-4 border-2 rounded-lg text-center transition-colors ${
+                      rating === option.value
+                        ? getRatingColor(option.value)
+                        : 'bg-gray-100 border-gray-200 hover:bg-gray-200'
+                    } ${rating === option.value ? 'text-white' : 'text-gray-700'}`}
+                  >
+                    <div className="text-2xl mb-1">{option.emoji}</div>
+                    <div className="font-semibold">{option.label}</div>
+                    <div className="text-xs opacity-75 mt-1">{option.desc}</div>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {message && (
-            <div className={`text-center py-2 px-4 rounded ${
-              message.includes('success') 
-                ? 'bg-green-100 text-green-700' 
-                : 'bg-red-100 text-red-700'
-            }`}>
-              {message}
+            {/* Date Selection */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Session Date
+              </label>
+              <input
+                type="date"
+                value={sessionDate}
+                onChange={(e) => setSessionDate(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
             </div>
-          )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-500 text-white py-3 px-4 rounded-md hover:bg-blue-600 disabled:opacity-50 font-semibold"
-          >
-            {loading ? 'Logging Session...' : 'Log Surf Session'}
-          </button>
-        </form>
+            {/* Time Selection */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Time of Day
+              </label>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { value: 'morning', label: 'Morning', time: '6AM - 10AM' },
+                  { value: 'midday', label: 'Midday', time: '10AM - 3PM' },
+                  { value: 'afternoon', label: 'Afternoon', time: '3PM - 7PM' }
+                ].map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setSessionTime(option.value as any)}
+                    className={`p-3 border-2 rounded-lg text-center transition-colors ${
+                      sessionTime === option.value
+                        ? 'bg-blue-500 border-blue-500 text-white'
+                        : 'bg-gray-100 border-gray-200 hover:bg-gray-200 text-gray-700'
+                    }`}
+                  >
+                    <div className="font-semibold">{option.label}</div>
+                    <div className="text-sm opacity-75">{option.time}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {message && (
+              <div className={`text-center py-2 px-4 rounded ${ 
+                message.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' 
+              }`}>
+                {message}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-blue-500 text-white py-3 px-4 rounded-md hover:bg-blue-600 disabled:opacity-50 font-semibold"
+            >
+              {loading ? 'Logging Session...' : 'Log Surf Session'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
